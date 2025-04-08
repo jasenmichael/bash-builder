@@ -59,6 +59,7 @@ run_bash_builder() {
 }
 
 if ! (return &>/dev/null); then
+  run_bash_builder "$@"
   # bash_builder_remove_start
   log_debug "DEBUG:    $DEBUG"
   log_debug "CLEAN:    $CLEAN"
@@ -67,14 +68,6 @@ if ! (return &>/dev/null); then
   log_debug "REMOVE_LINES_STARTING_WITH: $REMOVE_LINES_STARTING_WITH"
   log_debug "BUILT_BY_BASH_BUILDER: $BUILT_BY_BASH_BUILDER"
   # bash_builder_remove_end
-  run_bash_builder "$@"
-  # !!
-  log_debug "DEBUG:    $DEBUG"
-  log_debug "CLEAN:    $CLEAN"
-  log_debug "COMMENTS: $COMMENTS"
-  log_debug "INLINE_COMMENTS: $INLINE_COMMENTS"
-  log_debug "REMOVE_LINES_STARTING_WITH: $REMOVE_LINES_STARTING_WITH"
-  log_debug "BUILT_BY_BASH_BUILDER: $BUILT_BY_BASH_BUILDER"
 else
   echo "bash-builder should not be sourced"
   exit 1
