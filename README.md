@@ -27,7 +27,7 @@ A tool for building/transpiling bash scripts.
   # this works to, and can be used in combination with # %%, will become "VERSION=0.0.1"
   # %% $(curl -sL https://github.com/jasenmichael/bash-builder/raw/refs/heads/main/VERSION) # bash_builder_inject
   ```
-- Code block removal [example](https://github.com/jasenmichael/bash-utils/blob/main/bash-log.sh#L46-L72) [example](https://github.com/jasenmichael/bash-builder/blob/main/src/main.sh#L6-L11) 
+- Code block removal [example](https://github.com/jasenmichael/bash-utils/blob/main/bash-log.sh#L46-L72) [example](https://github.com/jasenmichael/bash-builder/blob/main/src/main.sh#L4-L11) 
   ```bash
   # bash_builder_remove_start/bash_builder_remove_end
   # this code block will be removed
