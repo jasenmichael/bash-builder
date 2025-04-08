@@ -25,7 +25,6 @@ BUILD_COMMAND="$SRC $SRC $DEST \
   --no-inline-comments \
   --clean \
   --comments \
-  --remove-lines-starting-with log_debug \
   $*"
 
 if [ "$WATCH" = true ]; then
