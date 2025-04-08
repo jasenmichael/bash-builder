@@ -5,23 +5,27 @@ A tool for building/transpiling bash scripts.
 ## Features
 
 - Optional sourced file injection
+  ```bash
+  # the contents of "./src/lib/usage.sh" will get injected
+  source "./src/lib/usage.sh"
+  # this will get ignored
+  . "./src/lib/usage.sh"
+  ```
 - Customizable comment removal
   ```bash
   # ## this comment always becomes #, even if COMMENTS=false
   # %% this comment gets removed, keeping everything after # %%
   # !! this comment always gets removed 
-  # thise gets removed if COMMENTS=false
-  echo "hi" # inline comment stays unless NO_INLINE_COMMENTS=false
+  # this gets removed if COMMENTS=false
+  echo "Yo!" # inline comment stays unless NO_INLINE_COMMENTS=false
+  echo "Wassuh!" # !! inline comment always gets removed
+  echo "Wassuh!" # ## inline comment is always kept, normalized to "<code> # <inline comment>""
 
-  # bash_builder_inject
   # this will become "VERSION=0.0.1"
   VERSION="$(cat VERSION)" # bash_builder_inject
 
   # this works to, and can be used in combination with # %%, will become "VERSION=0.0.1"
   # %% $(curl -sL https://github.com/jasenmichael/bash-builder/raw/refs/heads/main/VERSION) # bash_builder_inject
-
-
-
   ```
 - Code block removal [example](https://github.com/jasenmichael/bash-utils/blob/main/bash-log.sh#L46-L72) [example](https://github.com/jasenmichael/bash-builder/blob/main/src/main.sh#L6-L11) 
   ```bash
@@ -69,4 +73,4 @@ bash-builder src dest [options]
 
 ## License
 
-MIT License - see LICENSE file for details
+MIT License - see [LICENSE](LICENSE.md) file for details
