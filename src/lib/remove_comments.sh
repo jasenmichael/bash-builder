@@ -11,6 +11,9 @@
 # - remove_comments: Removes comments from the script with special handling for ## and !! comments
 # =================================================================
 remove_comments() {
+  # ## un-comment lines (remove  "# %% " from beginning of lines that start with "# %% ")
+  sed -i -E 's/^#[[:space:]]*%{2}[[:space:]]+//' "$DEST"
+
   # ## remove all comments except shebang that do not start with "# ##"
   if [ "$COMMENTS" = false ]; then
     sed -i -E '/^#!/b; /^[[:space:]]*#[[:space:]]*##/!{ /^[[:space:]]*#/d }' "$DEST"

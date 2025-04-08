@@ -17,7 +17,7 @@ parse_args() {
     -h | --help | help)
       usage 0
       ;;
-    -V | --version)
+    -V | --version | version)
       echo "$VERSION"
       exit 0
       ;;
