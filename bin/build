@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+set -e
+
+SCRIPT_DIR=$(dirname "$(realpath "$0")")
+ROOT_DIR=$(dirname "$SCRIPT_DIR")
+
+cd "$ROOT_DIR" || exit 1
+
+SRC_DIR="$ROOT_DIR/src"
+SRC="$SRC_DIR/main.sh"
+DEST="${BASH_BUILDER_OUTPUT:-$ROOT_DIR/build}/bash-builder"
+
+# install dependencies
+"$SCRIPT_DIR/install_dependencies" || exit $?
+
+echo -e "\033[0;32m[INFO]\033[0m  Building bash-builder"
+
+if [ "$1" = "-w" ] || [ "$1" = "--watch" ]; then
+  WATCH=true
+  shift # we shift this so we can pass any remaining args to the bash_builder command
+fi
+
+BUILD_COMMAND="$SRC $SRC $DEST \
+  --no-inline-comments \
+  --clean \
+  --comments \
+  --remove-lines-starting-with log_debug \
+  $*"
+
+if [ "$WATCH" = true ]; then
+  ! command -v node >/dev/null 2>&1 && {
+    echo -e "\033[0;31m[ERROR]\033[0m Node.js is required for watch mode"
+    exit 1
+  }
+
+  npx_cmd="npx"
+  # check for pnpm command
+  if command -v pnpm &>/dev/null; then
+    npx_cmd="pnpm dlx"
+  fi
+
+  $npx_cmd nodemon \
+    --watch "$SRC_DIR" \
+    --ext sh \
+    --exec "sleep 1 && $BUILD_COMMAND"
+else
+  $BUILD_COMMAND "$@"
+fi

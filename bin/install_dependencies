@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+set -e
+
+bash_utils_repo="https://github.com/jasenmichael/bash-utils"
+bash_utils_branch="main"
+
+START_DIR=$(pwd)
+
+# make sure we are in the root dir
+if [ ! -d "./src" ] && [ ! -d "./src/lib" ]; then
+  echo -e "\033[0;31m[ERROR]\033[0m Must be run from the bash-builder directory"
+  exit 1
+fi
+
+check_dependencey_dependencies() {
+  local missing_dependencies=()
+  ! command -v curl >/dev/null 2>&1 && missing_dependencies+=("curl")
+  ! command -v git >/dev/null 2>&1 && missing_dependencies+=("git")
+
+  if [ "${#missing_dependencies[@]}" -gt 0 ]; then
+    echo "  Missing dependencies: ${missing_dependencies[*]}"
+    return 1
+  fi
+}
+
+install_dependencies() {
+  check_dependencey_dependencies || return $?
+
+  echo -e "\033[0;32m[INFO]\033[0m  Installing bash-builder dependencies"
+
+  mkdir -p .dependencies
+
+  # install bash-utils
+  bash_utils_dir="${bash_utils_dir:-.dependencies/bash-utils}"
+  if [ ! -d "$bash_utils_dir" ]; then
+    git clone -b "$bash_utils_branch" "$bash_utils_repo" "$bash_utils_dir" >/dev/null 2>&1
+  else
+    cd "$bash_utils_dir" || exit
+    git checkout "$bash_utils_branch" >/dev/null 2>&1
+    cd "$START_DIR" || exit
+  fi
+
+  echo -e "\033[0;32m[INFO]\033[0m  bash-builder dependencies installed"
+
+}
+
+if ! (return &>/dev/null); then
+  install_dependencies "$@"
+  exit $?
+else
+  echo -e "\033[0;31m[ERROR]\033[0m This script should not be sourced"
+  exit 1
+fi
