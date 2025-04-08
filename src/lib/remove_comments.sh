@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# ======================================================================================
+# ================================================================================================
 # Script: remove_comments.sh
 # URL: https://github.com/jasenmichael/bash-builder/blob/main/src/lib/remove_comments.sh
 # !! Description: Removes comments from $DEST
@@ -9,7 +9,7 @@
 #
 # Functions:
 # - remove_comments: Removes comments from the script with special handling for ## and !! comments
-# ======================================================================================
+# ================================================================================================
 remove_comments() {
   # ## un-comment lines (remove  "# %% " from beginning of lines that start with "# %% ")
   sed -i -E 's/^#[[:space:]]*%{2}[[:space:]]+//' "$DEST"

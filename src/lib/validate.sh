@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# ===============================================================================
+# ================================================================================
 # Script: validate.sh
 # URL: https://github.com/jasenmichael/bash-builder/blob/main/src/lib/validate.sh
 # !! Description: Validates source and destination paths before processing
@@ -9,7 +9,7 @@
 #
 # Functions:
 # - validate: Validates that source file exists and destination is not a directory
-# ===============================================================================
+# ================================================================================
 validate() {
   if [ ! -f "$SRC" ]; then
     log_error "src file does not exist: $SRC"
