@@ -52,6 +52,8 @@ git clone https://github.com/jasenmichael/bash-builder.git
 cd bash-builder
 ./bin/build
 mv ./build/bash-builder $HOME/.local/bin
+cd ..
+rm -rf bash-builder
 ```
 
 ## Usage
