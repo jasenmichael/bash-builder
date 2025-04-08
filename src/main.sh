@@ -65,7 +65,7 @@ if ! (return &>/dev/null); then
   log_debug "COMMENTS: $COMMENTS"
   log_debug "INLINE_COMMENTS: $INLINE_COMMENTS"
   log_debug "REMOVE_LINES_STARTING_WITH: $REMOVE_LINES_STARTING_WITH"
-  log_debug "THIS_WAS_BUILT_BY_BASH_BUILDER_HEADER: $THIS_WAS_BUILT_BY_BASH_BUILDER_HEADER"
+  log_debug "BUILT_BY_BASH_BUILDER: $BUILT_BY_BASH_BUILDER"
   # bash_builder_remove_end
   run_bash_builder "$@"
   # !!
@@ -74,7 +74,7 @@ if ! (return &>/dev/null); then
   log_debug "COMMENTS: $COMMENTS"
   log_debug "INLINE_COMMENTS: $INLINE_COMMENTS"
   log_debug "REMOVE_LINES_STARTING_WITH: $REMOVE_LINES_STARTING_WITH"
-  log_debug "THIS_WAS_BUILT_BY_BASH_BUILDER_HEADER: $THIS_WAS_BUILT_BY_BASH_BUILDER_HEADER"
+  log_debug "BUILT_BY_BASH_BUILDER: $BUILT_BY_BASH_BUILDER"
 else
   echo "bash-builder should not be sourced"
   exit 1

@@ -25,8 +25,8 @@ parse_args() {
     --clean) CLEAN=true ;;
     --comments) COMMENTS=true ;;
     --no-inline-comments) INLINE_COMMENTS=false ;;
-    --no-THIS-WAS-BUILT-BY-BASH-BUILDER-HEADER)
-      THIS_WAS_BUILT_BY_BASH_BUILDER_HEADER=false
+    --no-built-by-bash-builder)
+      BUILT_BY_BASH_BUILDER=false
       ;;
     --remove-lines-starting-with)
       shift

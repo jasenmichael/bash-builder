@@ -8,10 +8,10 @@
 # !! License: MIT License
 #
 # Functions:
-# - inject_heading: Injects a header into the file if THIS_WAS_BUILT_BY_BASH_BUILDER_HEADER is true
+# - inject_heading: Injects a header into the file if BUILT_BY_BASH_BUILDER is true
 # =================================================================
 inject_heading() {
-  if [ "$THIS_WAS_BUILT_BY_BASH_BUILDER_HEADER" = true ]; then
+  if [ "$BUILT_BY_BASH_BUILDER" = true ]; then
     printf '%s\n' "$BUILT_BY_BASH_BUILDER_HEADER" | sed -i '1r /dev/stdin' "$DEST"
   fi
 }
