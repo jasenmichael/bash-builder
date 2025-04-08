@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-# ======================================================================
+# ============================================================================
 # Script: usage.sh
-# URL: https://github.com/jasenmichael/bash-builder/src/lib/usage.sh
+# URL: https://github.com/jasenmichael/bash-builder/blob/main/src/lib/usage.sh
 # !! Description: Prints usage information for the script
 # !! Author: jasenmichael
 # !! License: MIT License
 #
 # Functions:
 # - usage: Prints usage information and exits with specified status code
-# ======================================================================
+# ============================================================================
 USAGE=$(
   cat <<EOF | sed 's/^  //'
   Usage:

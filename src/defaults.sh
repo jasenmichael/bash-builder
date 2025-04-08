@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2034
+# shellcheck disable=SC2034 # bash_builder_remove_line
 
 DEBUG=${DEBUG:-false}
 CLEAN=${CLEAN:-false}

@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-# =================================================================
+# ==============================================================================================
 # Script: inject_sourced_contents.sh
-# URL: https://github.com/jasenmichael/bash-builder/src/lib/inject_sourced_contents.sh
+# URL: https://github.com/jasenmichael/bash-builder/blob/main/src/lib/inject_sourced_contents.sh
 # !! Description: Injects contents of sourced files into the main script
 # !! Author: jasenmichael
 # !! License: MIT License
 #
 # Functions:
 # - inject_sourced_contents: Injects contents of sourced files into the main script
-# =================================================================
+# ==============================================================================================
 inject_sourced_contents() {
   while IFS= read -r line; do
     if [[ "$line" =~ ^source\ .* ]]; then

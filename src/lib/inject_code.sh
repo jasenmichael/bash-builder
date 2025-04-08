@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-# =================================================================
+# ==================================================================================
 # Script: inject_code.sh
-# URL: https://github.com/jasenmichael/bash-builder/src/lib/inject_code.sh
+# URL: https://github.com/jasenmichael/bash-builder/blob/main/src/lib/inject_code.sh
 # !! Description: Injects code into files at specified markers
 # !! Author: jasenmichael
 # !! License: MIT License
 #
 # Functions:
 # - inject_code: Replaces lines marked with "# bash_builder_inject" with specified code
-# =================================================================
+# ==================================================================================
 inject_code() {
   lines_to_inject=()
   # Read line by line from $DEST and store lines ending with "# bash_builder_inject"

@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-# =======================================================================
+# =================================================================================
 # Script: parse_args.sh
-# URL: https://github.com/jasenmichael/bash-builder/src/lib/parse_args.sh
+# URL: https://github.com/jasenmichael/bash-builder/blob/main/src/lib/parse_args.sh
 # !! Description: Parses command line arguments for the script
 # !! Author: jasenmichael
 # !! License: MIT License
 #
 # Functions:
 # - parse_args: Parses command line arguments and sets global variables
-# =======================================================================
+# =================================================================================
 parse_args() {
   # shellcheck disable=SC2034
   while test $# != 0; do
