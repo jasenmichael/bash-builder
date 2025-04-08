@@ -5,15 +5,11 @@ set -e
 bash_utils_repo="https://github.com/jasenmichael/bash-utils"
 bash_utils_branch="main"
 
+# make sure we are in the root dir
+cd "$(realpath "${0%/*}/../")"
 START_DIR=$(pwd)
 
-# make sure we are in the root dir
-if [ ! -d "./src" ] && [ ! -d "./src/lib" ]; then
-  echo -e "\033[0;31m[ERROR]\033[0m Must be run from the bash-builder directory"
-  exit 1
-fi
-
-check_dependencey_dependencies() {
+check_dependency_dependencies() {
   local missing_dependencies=()
   ! command -v curl >/dev/null 2>&1 && missing_dependencies+=("curl")
   ! command -v git >/dev/null 2>&1 && missing_dependencies+=("git")
@@ -25,7 +21,7 @@ check_dependencey_dependencies() {
 }
 
 install_dependencies() {
-  check_dependencey_dependencies || return $?
+  check_dependency_dependencies || return $?
 
   echo -e "\033[0;32m[INFO]\033[0m  Installing bash-builder dependencies"
 
